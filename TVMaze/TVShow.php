@@ -135,8 +135,8 @@ class TVShow extends TVProduction{
 			foreach ($show_data['_embedded']['episodes'] as $episode) {
 				if ($episode['airdate'] >= $current_date) {
 					$this->nextAirDate = $episode['airdate'];
-					$this->airTime = date("g:i A", $episode['airtime']);
-					$this->airDay = date('l', strtotime($episode['airdate']));
+					$this->airTime = $episode['airtime'];
+					$this->airDay = $episode['airdate'];
 					break;
 				}
 			}
