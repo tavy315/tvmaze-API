@@ -147,12 +147,12 @@ class TVMaze {
 	 * Takes in a show ID and outputs the TVShow Object
 	 *
 	 * @param      $ID
-	 * @param null $embed_cast
+	 * @param null $embed_seasons
 	 *
 	 * @return array
 	 */
-	function getShowByShowID($ID, $embed_cast=null){
-		if($embed_cast === true){
+	function getShowByShowID($ID, $embed_seasons=null){
+		if($embed_seasons === true){
 			$url = self::APIURL.'/shows/'.$ID.'?embed=seasons';
 		}else{
 			$url = self::APIURL.'/shows/'.$ID;
@@ -160,15 +160,17 @@ class TVMaze {
 
 		$show = $this->getFile($url);
 
-		$cast = [];
-		foreach($show['_embedded']['seasons'] as $season){
-			$s = new Season($season);
-			array_push($cast, [$s]);
+		$seasons = [];
+		if($embed_seasons === true) {
+			foreach ($show['_embedded']['seasons'] as $season) {
+				$s = new Season($season);
+				array_push($seasons, [$s]);
+			}
 		}
 
 		$TVShow = new TVShow($show);
 
-		return $embed_cast === true ? [$TVShow, $cast] : [$TVShow];
+		return $embed_seasons === true ? [$TVShow, $seasons] : [$TVShow];
 	}
 
 	/**
