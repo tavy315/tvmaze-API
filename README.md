@@ -40,8 +40,17 @@ Supported Methods with full example below. Simple example found in Examples.php.
     //Return all information about a show given the show ID
     $Client->TVMaze->getShowByShowID(1);
     
+    //Return all seasons for a show given the show ID
+    $Client->TVMaze->getSeasonsByShowID(1);
+    
+    //Return a single seasons information for a show given the show ID and season number
+    $Client->TVMaze->getSeasonByShowID(1, 2);
+    
     //Return all episodes for a show given the show ID
     $Client->TVMaze->getEpisodesByShowID(1);
+
+    //Returns a single episodes information by its show ID, season and episode numbers
+    $Client->TVMaze->getEpisodeByNumber(1, 2, 11);
     
     //Return the cast for a show given the show ID
     $Client->TVMaze->getCastByShowID(1);
