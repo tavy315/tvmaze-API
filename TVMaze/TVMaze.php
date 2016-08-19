@@ -153,7 +153,7 @@ class TVMaze {
 	 */
 	function getShowByShowID($ID, $embed_cast=null){
 		if($embed_cast === true){
-			$url = self::APIURL.'/shows/'.$ID.'?embed=cast';
+			$url = self::APIURL.'/shows/'.$ID.'?embed=seasons';
 		}else{
 			$url = self::APIURL.'/shows/'.$ID;
 		}
@@ -161,10 +161,9 @@ class TVMaze {
 		$show = $this->getFile($url);
 
 		$cast = [];
-		foreach($show['_embedded']['cast'] as $person){
-			$actor = new Actor($person['person']);
-			$character = new Character($person['character']);
-			array_push($cast, [$actor, $character]);
+		foreach($show['_embedded']['seasons'] as $season){
+			$s = new Season($season);
+			array_push($cast, [$s]);
 		}
 
 		$TVShow = new TVShow($show);
@@ -258,6 +257,44 @@ class TVMaze {
 			}
 		}
 		return $allEpisodes;
+	}
+
+	/**
+	 * Takes in a show ID and outputs season number info
+	 *
+	 * @param $ID
+	 *
+	 * @return object
+	 */
+	function getSeasonByShowID($ID, $season){
+		$url = self::APIURL.'/shows/'.$ID.'/seasons';
+		$getSeasons = $this->getFile($url);
+
+		foreach($getSeasons as $seasons){
+			if ($seasons['number'] == (int) $season) { return new Season($seasons);	}
+		}
+
+		return null;
+	}
+
+	/**
+	 * Takes in a show ID and outputs all of the seasons info
+	 *
+	 * @param $ID
+	 *
+	 * @return array
+	 */
+	function getSeasonsByShowID($ID){
+		$url = self::APIURL.'/shows/'.$ID.'/seasons';
+		$seasons = $this->getFile($url);
+
+		$output = [];
+		foreach($seasons as $season){
+			$s = new Season($season);
+			array_push($output, $season);
+		}
+
+		return $output;
 	}
 
 	/**
