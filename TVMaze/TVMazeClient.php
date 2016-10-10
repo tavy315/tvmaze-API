@@ -1,7 +1,7 @@
 <?php
 namespace Tavy315\TVMaze;
 
-class TVMaze
+class TVMazeClient
 {
     const API_URL = 'http://api.tvmaze.com';
 
