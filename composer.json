@@ -1,17 +1,22 @@
 {
-    "name": "rewrewby/tvmaze-api",
-    "type": "library",
-    "license": "MIT",
-    "description": "TVMaze-API-Wrapper",
-    "authors": [
-        {
-            "name": "Josh Pinkney",
-            "email": "Joshpinkney@gmail.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "JPinkney\\": ""
-        }
+  "name": "tavy315/tvmaze-api",
+  "type": "library",
+  "license": "MIT",
+  "description": "TVMaze API PHP wrapper",
+  "authors": [
+    {
+      "name": "Josh Pinkney",
+      "email": "Joshpinkney@gmail.com"
+    },
+    {
+      "name": "Octavian Matei",
+      "homepage": "http://www.octav.name",
+      "role": "Contributor"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "JPinkney\\": ""
+    }
+  }
 }
