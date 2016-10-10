@@ -1,18 +1,13 @@
 <?php
+namespace Tavy315\TVMaze;
 
-namespace JPinkney\TVMaze;
-
-Class AKA
+class AKA
 {
-	/**
-	 * @param $aka_data
-	 */
-	function __construct($aka_data)
-	{
-		if(!empty($aka_data['name'])) {
-			$this->akas = $aka_data['name'];
-		} else {
-			$this->akas = '';
-		}
-	}
+    /**
+     * @param array $data
+     */
+    public function __construct($data)
+    {
+        $this->akas = !empty($data['name']) ? $data['name'] : '';
+    }
 }

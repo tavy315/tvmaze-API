@@ -1,63 +1,47 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: joshpinkney
- * Date: 9/15/15
- * Time: 2:13 PM
- */
-
-namespace JPinkney\TVMaze;
+namespace Tavy315\TVMaze;
 
 /**
  * Class Episode
  *
- * @package JPinkney\TVMaze
+ * @package Tavy315\TVMaze
  */
-class Season extends TVProduction {
+class Season extends TVProduction
+{
+    /** @var */
+    public $number;
 
-	/**
-	 * @var
-	 */
-	public $number;
+    /** @var */
+    public $episodeOrder;
+
+    /** @var string */
+    public $premiereDate;
+
+    /** @var string */
+    public $endDate;
+
+    /** @var */
+    public $network;
+
+    /** @var string */
+    public $webChannel;
+
+    /** @var string */
+    public $summary;
+
     /**
-	 * @var
-	 */
-	public $episodeOrder;
-	/**
-	 * @var
-	 */
-	public $premiereDate;
-	/**
-	 * @var
-	 */
-	public $endDate;
-	/**
-	 * @var
-	 */
-	public $network;
-	/**
-	 * @var
-	 */
-	public $webChannel;
-	/**
-	 * @var string
-	 */
-	public $summary;
+     * @param array $data
+     */
+    public function __construct($data)
+    {
+        parent::__construct($data);
 
-	/**
-	 * @param $season_data
-	 */
-	function __construct($season_data){
-		parent::__construct($season_data);
-		$this->number = $season_data['number'];
-		$this->episodeOrder = $season_data['episodeOrder'];
-		$this->premiereDate = $season_data['premiereDate'];
-		$this->endDate = $season_data['endDate'];
-		$this->network = $season_data['network'];
-		$this->webChannel = $season_data['webChannel'];
-		$this->summary = strip_tags($season_data['summary']);
-	}
-
-};
-
-?>
+        $this->number = $data['number'];
+        $this->episodeOrder = $data['episodeOrder'];
+        $this->premiereDate = $data['premiereDate'];
+        $this->endDate = $data['endDate'];
+        $this->network = $data['network'];
+        $this->webChannel = $data['webChannel'];
+        $this->summary = strip_tags($data['summary']);
+    }
+}

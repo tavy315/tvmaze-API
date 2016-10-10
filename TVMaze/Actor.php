@@ -1,25 +1,11 @@
 <?php
-/**
- * Creator: jpinkney
- * Date: 9/15/15
- * Time: 2:15 PM
- */
-
-namespace JPinkney\TVMaze;
-
-/*
- *
- * Currently unused because there is no actor specific methods with TVMaze
- *
- */
+namespace Tavy315\TVMaze;
 
 /**
  * Class Actor
  *
- * @package JPinkney\TVMaze
+ * @package Tavy315\TVMaze
  */
-class Actor extends TVProduction {
-
-};
-
-?>
+class Actor extends TVProduction
+{
+}

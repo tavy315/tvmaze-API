@@ -1,56 +1,41 @@
 <?php
-/**
- * Creator: joshpinkney
- * Date: 9/15/15
- * Time: 2:16 PM
- */
-
-namespace JPinkney\TVMaze;
+namespace Tavy315\TVMaze;
 
 /**
  * Class TVProduction
  *
- * @package JPinkney\TVMaze
+ * @package Tavy315\TVMaze
  */
-class TVProduction {
+class TVProduction
+{
+    /** @var int */
+    public $id;
 
-	/**
-	 * @var
-	 */
-	public $id;
-	/**
-	 * @var
-	 */
-	public $url;
-	/**
-	 * @var
-	 */
-	public $name;
-	/**
-	 * @var
-	 */
-	public $images;
-	/**
-	 * @var
-	 */
-	public $mediumImage;
-	/**
-	 * @var
-	 */
-	public $originalImage;
+    /** @var string */
+    public $url;
 
-	/**
-	 * @param $production_data
-	 */
-	function __construct($production_data){
-		$this->id = $production_data['id'];
-		$this->url = $production_data['url'];
-		$this->name = $production_data['name'];
-		$this->images = $production_data['image'];
-		$this->mediumImage = $production_data['image']['medium'];
-		$this->originalImage = $production_data['image']['original'];
-	}
+    /** @var string */
+    public $name;
 
-};
+    /** @var array */
+    public $images;
 
-?>
+    /** @var string */
+    public $mediumImage;
+
+    /** @var string */
+    public $originalImage;
+
+    /**
+     * @param array $data
+     */
+    public function __construct($data)
+    {
+        $this->id = $data['id'];
+        $this->url = $data['url'];
+        $this->name = $data['name'];
+        $this->images = $data['image'];
+        $this->mediumImage = $data['image']['medium'];
+        $this->originalImage = $data['image']['original'];
+    }
+}

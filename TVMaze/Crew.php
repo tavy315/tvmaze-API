@@ -1,29 +1,21 @@
 <?php
-/**
- * Creator: jpinkney
- * Date: 9/15/15
- * Time: 2:12 PM
- */
-
-namespace JPinkney\TVMaze;
+namespace Tavy315\TVMaze;
 
 /**
  * Class Crew
  *
- * @package JPinkney\TVMaze
+ * @package Tavy315\TVMaze
  */
-class Crew {
+class Crew
+{
+    /** @var string */
+    public $type;
 
-	/**
-	 * @var
-	 */
-	public $type;
-
-	/**
-	 * @param $crew_data
-	 */
-	function __construct($crew_data){
-		$this->type = $crew_data['type'];
-	}
-
-};
+    /**
+     * @param array $data
+     */
+    public function __construct($data)
+    {
+        $this->type = $data['type'];
+    }
+}
