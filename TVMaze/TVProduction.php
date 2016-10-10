@@ -11,20 +11,20 @@ class TVProduction
     /** @var int */
     public $id;
 
-    /** @var string */
-    public $url;
+    /** @var array */
+    public $images;
 
     /** @var string */
     public $name;
-
-    /** @var array */
-    public $images;
 
     /** @var string */
     public $mediumImage;
 
     /** @var string */
     public $originalImage;
+
+    /** @var string */
+    public $url;
 
     /**
      * @param array $data

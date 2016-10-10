@@ -8,20 +8,35 @@ namespace Tavy315\TVMaze;
  */
 class TVShow extends TVProduction
 {
-    /** @var string */
-    public $type;
+    /** @var bool|string */
+    public $airDay;
 
-    /** @var */
-    public $language;
+    /** @var bool|string */
+    public $airTime;
+
+    /** @var AKA[] */
+    public $akas;
+
+    /** @var string */
+    public $country;
+
+    /** @var string */
+    public $externals;
 
     /** @var */
     public $genres;
 
     /** @var */
-    public $status;
+    public $language;
 
     /** @var */
-    public $runtime;
+    public $network;
+
+    /** @var array */
+    public $network_array;
+
+    /** @var string */
+    public $nextAirDate;
 
     /** @var */
     public $premiered;
@@ -30,37 +45,22 @@ class TVShow extends TVProduction
     public $rating;
 
     /** @var */
-    public $weight;
-
-    /** @var array */
-    public $network_array;
+    public $runtime;
 
     /** @var */
-    public $network;
-
-    /** @var string */
-    public $webChannel;
-
-    /** @var string */
-    public $externalIDs;
+    public $status;
 
     /** @var string */
     public $summary;
 
     /** @var string */
-    public $nextAirDate;
-
-    /** @var bool|string */
-    public $airTime;
-
-    /** @var bool|string */
-    public $airDay;
-
-    /** @var AKA[] */
-    public $akas;
+    public $type;
 
     /** @var string */
-    public $country;
+    public $webChannel;
+
+    /** @var */
+    public $weight;
 
     /**
      * @param array $data
@@ -69,32 +69,32 @@ class TVShow extends TVProduction
     {
         parent::__construct($data);
 
-        $this->type = $data['type'];
-        $this->language = $data['language'];
-        $this->genres = $data['genres'];
-        $this->status = $data['status'];
-        $this->runtime = $data['runtime'];
-        $this->premiered = $data['premiered'];
-        $this->rating = $data['rating'];
-        $this->weight = $data['weight'];
-        $this->network_array = $data['network'];
-        $this->network = $data['network']['name'];
-        $this->webChannel = $data['webChannel'];
+        $this->akas = (isset($data['_embedded']['akas']) ? $data['_embedded']['akas'] : null);
         $this->country = $data['network']['country']['code'];
         if (count($data['webChannel']) > 0) {
             $this->country = $data['webChannel']['country']['code'];
         }
-        $this->externalIDs = $data['externals'];
+        $this->externals = $data['externals'];
+        $this->genres = $data['genres'];
+        $this->language = $data['language'];
+        $this->network = $data['network']['name'];
+        $this->network_array = $data['network'];
+        $this->premiered = $data['premiered'];
+        $this->rating = $data['rating'];
+        $this->runtime = $data['runtime'];
+        $this->status = $data['status'];
         $this->summary = strip_tags($data['summary']);
-        $this->akas = (isset($data['_embedded']['akas']) ? $data['_embedded']['akas'] : null);
+        $this->type = $data['type'];
+        $this->webChannel = $data['webChannel'];
+        $this->weight = $data['weight'];
 
-        $current_date = date('Y-m-d');
+        $currentDate = date('Y-m-d');
         if (!empty($data['_embedded']['episodes'])) {
             foreach ($data['_embedded']['episodes'] as $episode) {
-                if ($episode['airdate'] >= $current_date) {
-                    $this->nextAirDate = $episode['airdate'];
-                    $this->airTime = $episode['airtime'];
+                if ($episode['airdate'] >= $currentDate) {
                     $this->airDay = $episode['airdate'];
+                    $this->airTime = $episode['airtime'];
+                    $this->nextAirDate = $episode['airdate'];
                     break;
                 }
             }
