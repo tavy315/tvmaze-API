@@ -1,9 +1,9 @@
-# TVMaze-PHP-API-Wrapper
+# TVMaze API PHP wrapper
 
 An easier way to interact with TVMaze's endpoints. Developed in PHP.
 
 ### Installing VIA Composer
-* composer require joshpinkney/tv-maze-php-api dev-master
+* composer require tavy315/tvmaze-api dev-master
 
 ### Goal
  * The goal of this API Wrapper is to turn TVMaze's endpoints into something more object orientated and readable
@@ -14,60 +14,57 @@ Supported Methods with full example below. Simple example found in Examples.php.
 ```php
 <?php
 
-    require_once "TVMazeIncludes.php";
-
-    $Client = new JPinkney\TVMaze\Client;
+    $client = new Tavy315\TVMaze\Client;
     
     /*
      * List of simple ways you can interact with the api
      */
      
     //Return all tv shows relating to the given input
-    $Client->TVMaze->search("Arrow");
+    $client->TVMaze->search("Arrow");
     
     //Return the most relevant tv show to the given input
-    $Client->TVMaze->singleSearch("The Walking Dead");
+    $client->TVMaze->singleSearch("The Walking Dead");
     
     //Allows show lookup by using TVRage or TheTVDB ID
-    $Client->TVMaze->getShowBySiteID("TVRage", 33272);
+    $client->TVMaze->getShowBySiteID("TVRage", 33272);
 
     //Return all possible actors relating to the given input
-    $Client->TVMaze->getPersonByName("Nicolas Cage");
+    $client->TVMaze->getPersonByName("Nicolas Cage");
     
     //Return all the shows in the given country and/or date
-    $Client->TVMaze->getSchedule();
+    $client->TVMaze->getSchedule();
     
     //Return all information about a show given the show ID
-    $Client->TVMaze->getShowByShowID(1);
+    $client->TVMaze->getShowByShowID(1);
     
     //Return all seasons for a show given the show ID
-    $Client->TVMaze->getSeasonsByShowID(1);
+    $client->TVMaze->getSeasonsByShowID(1);
     
     //Return a single seasons information for a show given the show ID and season number
-    $Client->TVMaze->getSeasonByShowID(1, 2);
+    $client->TVMaze->getSeasonByShowID(1, 2);
     
     //Return all episodes for a show given the show ID
-    $Client->TVMaze->getEpisodesByShowID(1);
+    $client->TVMaze->getEpisodesByShowID(1);
 
     //Returns a single episodes information by its show ID, season and episode numbers
-    $Client->TVMaze->getEpisodeByNumber(1, 2, 11);
+    $client->TVMaze->getEpisodeByNumber(1, 2, 11);
     
     //Return the cast for a show given the show ID
-    $Client->TVMaze->getCastByShowID(1);
+    $client->TVMaze->getCastByShowID(1);
     
     //Return a master list of TVMazes shows given the page number
-    $Client->TVMaze->getAllShowsByPage(2);
+    $client->TVMaze->getAllShowsByPage(2);
     
     //Return an actor given their ID
-    $Client->TVMaze->getPersonByID(50);
+    $client->TVMaze->getPersonByID(50);
     
     //Return an array of all the shows a particular actor has been in
-    $Client->TVMaze->getCastCreditsByID(25);
+    $client->TVMaze->getCastCreditsByID(25);
     
     //Return an array of all the positions a particular actor has been in
-    $Client->TVMaze->getCrewCreditsByID(100);
+    $client->TVMaze->getCrewCreditsByID(100);
     
-?>
 ```
 
 ### Open Source Projects using this
