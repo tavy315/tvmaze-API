@@ -347,10 +347,13 @@ class TVMazeClient
         if ($page == null) {
             $url = self::API_URL . '/shows';
         } else {
-            $url = self::API_URL . '/shows?page' . $page;
+            $url = self::API_URL . '/shows?page=' . $page;
         }
 
         $shows = $this->getFile($url);
+        if (false === $shows) {
+            return false; 
+        }
 
         $relevant_shows = [];
         foreach ($shows as $series) {
