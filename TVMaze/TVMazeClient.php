@@ -354,13 +354,13 @@ class TVMazeClient
         if (false === $shows) {
             return false; 
         }
-        
+
         $relevant_shows = [];
         foreach ($shows as $series) {
             $TVShow = new TVShow($series);
             $relevant_shows[] = $TVShow;
         }
-        
+
         return $relevant_shows;
     }
 
