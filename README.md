@@ -3,7 +3,7 @@
 An easier way to interact with TVMaze's endpoints. Developed in PHP.
 
 ### Installing VIA Composer
-* composer require tavy315/tvmaze-api dev-master
+`composer require tavy315/tvmaze-api dev-master`
 
 ### Goal
  * The goal of this API Wrapper is to turn TVMaze's endpoints into something more object orientated and readable
